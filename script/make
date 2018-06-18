@@ -1,0 +1,27 @@
+#!/bin/bash
+
+set -e
+
+DEBUG="-g"
+WARNINGS="-Wall -Wextra -Werror"
+STANDARD="-std=c++14"
+FILES="src/wasm.cpp src/main.cpp"
+
+FLAGS="$WARNINGS $STANDARD $DEBUG"
+
+if [[ $# -eq 0 ]]; then
+  echo "Usage: $0 [all|clean]"
+  exit 1
+fi
+
+mkdir -p bin
+mkdir -p obj
+
+if [[ $1 == all ]]; then
+  clang++ $FLAGS $FILES -o bin/wasmrt
+elif [[ $1 == clean ]]; then
+  rm -rf obj/ bin/
+fi
+
+exit 0
+
