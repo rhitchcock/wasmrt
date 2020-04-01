@@ -14,6 +14,10 @@ namespace wasm {
   private:
     bool loaded = false;
   };
+  class reader {
+  public:
+    reader(const std::string &file_path);
+    ~reader();
 }
 
 #endif

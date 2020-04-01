@@ -11,7 +11,8 @@ int main(int argc, char **argv) {
     std::cout << "Usage: " << argv[0] << " file" << std::endl;
     return EXIT_FAILURE;
   }
-  wasm::module module(argv[1]);
+  wasm::reader reader(argv[1]);
+  wasm::module module(reader);
   if (!module.is_loaded()) {
     std::cout << "Not a wasm file." << std::endl;
     return EXIT_FAILURE;
